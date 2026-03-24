@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dp3ri3u6vr8mq"]
 
+[ext_resource type="Script" uid="uid://dcf6sisok8cg3" path="res://scripts/game.gd" id="1_7dkdp"]
 [ext_resource type="PackedScene" uid="uid://b2q5fgrsv7613" path="res://scenes/Player.tscn" id="1_t2lbs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dkdp"]
@@ -24,10 +25,11 @@ adjustment_brightness = 0.73
 adjustment_contrast = 0.895
 adjustment_saturation = 0.73
 
-[node name="Node3D" type="Node3D" unique_id=1785371114]
+[node name="Game" type="Node3D" unique_id=1785371114]
+script = ExtResource("1_7dkdp")
 
 [node name="Player" parent="." unique_id=1556181095 instance=ExtResource("1_t2lbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 96.3758, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1405563, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=680408242]
 
@@ -40,6 +42,10 @@ material = SubResource("StandardMaterial3D_t2lbs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1932134162]
 transform = Transform3D(1, 0, 0, 0, -0.0075397207, 0.4549437, 0, -2.1979492, -0.0075397217, 0, 161.29163, 0)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1123832660]
 environment = SubResource("Environment_2j53y")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=746833685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.9511433)
