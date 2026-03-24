@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://dglvei3y5mee6"]
 
 [ext_resource type="Texture2D" uid="uid://67diueg7wxh2" path="res://assets/Bos-Nederland-Epe-e1719389547661-0x1400-c-default.webp" id="1_mjxdi"]
+[ext_resource type="Script" uid="uid://btlc072812vy7" path="res://fishingminigame.gd" id="1_ybf4s"]
 [ext_resource type="Shader" uid="uid://blonghsm4lsx4" path="res://water.gdshader" id="2_ybf4s"]
+[ext_resource type="Texture2D" uid="uid://cmukqvmc3sc06" path="res://assets/icon.svg" id="4_ufety"]
+[ext_resource type="FontFile" uid="uid://dkasunfmvknqv" path="res://assets/Lexend_Deca-2/static/LexendDeca-Bold.ttf" id="5_uefat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufety"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ufety"]
 
@@ -40,17 +45,40 @@ shader_parameter/amplitude = 10.0
 subdivide_width = 20
 subdivide_depth = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uefat"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufety"]
+radius = 64.26392
+
+[sub_resource type="LabelSettings" id="LabelSettings_0muo6"]
+font = ExtResource("5_uefat")
+font_size = 32
+
 [node name="Fishingminigame" type="Node2D" unique_id=1107737476]
+script = ExtResource("1_ybf4s")
+
+[node name="Panel" type="Panel" parent="." unique_id=1965595680]
+visible = false
+offset_right = 37.0
+offset_bottom = 547.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufety")
 
 [node name="BosNederlandEpeE17193895476610x1400CDefault" type="Sprite2D" parent="." unique_id=1138402381]
-position = Vector2(539, 57.999996)
-scale = Vector2(0.4942857, 0.4942857)
+visible = false
+position = Vector2(549.24286, 57.999996)
+scale = Vector2(0.48530078, 0.4942857)
 texture = ExtResource("1_mjxdi")
 
 [node name="ColorRect" type="MeshInstance2D" parent="." unique_id=1789132690]
+visible = false
 material = SubResource("ShaderMaterial_tpr4m")
-position = Vector2(551, 232.375)
-scale = Vector2(1102.5, 143.25)
+position = Vector2(551, 280.375)
+scale = Vector2(1102.5, 239.25002)
 mesh = SubResource("QuadMesh_mjxdi")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=375764188]
@@ -59,3 +87,82 @@ offset_left = 64.0
 offset_top = 126.0
 offset_right = 104.0
 offset_bottom = 166.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1223994415]
+visible = false
+offset_left = 30.0
+offset_top = 3.0
+offset_right = 568.0
+offset_bottom = 30.0
+rotation = 1.5707964
+min_value = 0.44
+value = 12.66
+fill_mode = 1
+show_percentage = false
+
+[node name="Panel2" type="Control" parent="." unique_id=1415925530]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 445.0
+offset_bottom = 449.0
+
+[node name="minigamebounds" type="Panel" parent="Panel2" unique_id=1851182437]
+unique_name_in_owner = true
+clip_children = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uefat")
+
+[node name="rod" type="ColorRect" parent="Panel2/minigamebounds" unique_id=700460088]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 168.0
+offset_top = -539.0
+offset_right = 175.0
+offset_bottom = 132.0
+color = Color(0, 0, 0, 1)
+
+[node name="rodend" type="Sprite2D" parent="Panel2/minigamebounds/rod" unique_id=867799195]
+unique_name_in_owner = true
+position = Vector2(2.9999962, 674)
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("4_ufety")
+
+[node name="Area2D" type="Area2D" parent="Panel2/minigamebounds/rod/rodend" unique_id=828083614]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel2/minigamebounds/rod/rodend/Area2D" unique_id=1985597087]
+shape = SubResource("CircleShape2D_ufety")
+
+[node name="fishes" type="Control" parent="Panel2/minigamebounds" unique_id=1974590747]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Panel2" unique_id=2037081890]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = 5.0
+offset_right = 44.5
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "fish!"
+label_settings = SubResource("LabelSettings_0muo6")
+
+[node name="Label" type="Label" parent="." unique_id=169225283]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="area_entered" from="Panel2/minigamebounds/rod/rodend/Area2D" to="." method="_on_area_2d_area_entered"]
