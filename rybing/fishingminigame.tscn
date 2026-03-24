@@ -54,6 +54,7 @@ scale = Vector2(1102.5, 1496.5)
 mesh = SubResource("QuadMesh_mjxdi")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=375764188]
+visible = false
 offset_left = 64.0
 offset_top = 126.0
 offset_right = 104.0
