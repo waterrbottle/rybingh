@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="rybing"
+run/main_scene="uid://dp3ri3u6vr8mq"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [physics]
 
