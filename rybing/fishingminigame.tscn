@@ -49,8 +49,8 @@ texture = ExtResource("1_mjxdi")
 
 [node name="ColorRect" type="MeshInstance2D" parent="." unique_id=1789132690]
 material = SubResource("ShaderMaterial_tpr4m")
-position = Vector2(551, 909)
-scale = Vector2(1102.5, 1496.5)
+position = Vector2(551, 232.375)
+scale = Vector2(1102.5, 143.25)
 mesh = SubResource("QuadMesh_mjxdi")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=375764188]
