@@ -25,6 +25,11 @@ func _process(delta: float) -> void:
 			rodvel.y += 0.05
 	if %rodend.global_position.y - %minigamebounds.position.y < 10:
 		rodvel.y += 0.1
+	
+	if %rod.position.x < -5:
+		%rod.position.x = 5
+	if %rod.position.x >  %minigamebounds.size.x + 5:
+		%rod.position.x =  %minigamebounds.size.x - 5
 	if %rod.position.x < 0:
 		if outofbounds == false:
 			rodvel.x *= -1
